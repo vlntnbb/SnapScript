@@ -22,34 +22,63 @@ cd SnapScript
 python -m venv .venv
 source .venv/bin/activate  # В Windows: .venv\Scripts\activate
 
-# Установка зависимостей
+# Установка основных зависимостей
 pip install -r requirements.txt
+
+# Для работы с транскрипцией нужны дополнительные зависимости
+pip install faster-whisper
 ```
 
 ## Использование
 
+По умолчанию, папка с результатами будет создана внутри директории `userdata` (например, `userdata/имя_видео/`).
+
 Базовое использование:
 
 ```bash
-python snapshot_extractor.py путь/к/видео.mp4
+python snapscript_cli.py путь/к/видео.mp4
+```
+
+Указать другую папку для сохранения результатов:
+
+```bash
+python snapscript_cli.py путь/к/видео.mp4 -o путь/к/другой_папке
 ```
 
 С дополнительными опциями:
 
 ```bash
-python snapshot_extractor.py путь/к/видео.mp4 --threshold 15 --stabilization-offset 0.7
+python snapscript_cli.py путь/к/видео.mp4 --threshold 15 --stabilization-offset 0.7
 ```
 
 Для включения транскрипции:
 
 ```bash
-python snapshot_extractor.py путь/к/видео.mp4 --transcribe --whisper-model medium
+python snapscript_cli.py путь/к/видео.mp4 --transcribe --whisper-model medium
 ```
 
 С извлечением аудио-сегментов:
 
 ```bash
-python snapshot_extractor.py путь/к/видео.mp4 --transcribe --extract-audio
+python snapscript_cli.py путь/к/видео.mp4 --transcribe --extract-audio
+```
+
+## Структура проекта
+
+```
+snapscript/
+├── core/                    - Основные компоненты
+│   ├── video_processor.py   - Обработка видео и обнаружение сцен
+│   ├── audio_processor.py   - Обработка аудио и транскрипция
+│   └── ffmpeg_wrapper.py    - Обертка для ffmpeg
+├── reporting/               - Компоненты отчетов
+│   ├── report_generator.py  - Генератор HTML отчетов
+│   ├── srt_generator.py     - Генератор SRT файлов
+│   └── templates/           - HTML и CSS шаблоны
+└── utils/                   - Вспомогательные компоненты
+    ├── time_utils.py        - Утилиты для работы с временем
+    ├── fs_utils.py          - Утилиты для файловой системы
+    └── logging_utils.py     - Настройка логирования
 ```
 
 ## Зависимости
@@ -58,4 +87,9 @@ python snapshot_extractor.py путь/к/видео.mp4 --transcribe --extract-a
 - OpenCV
 - PySceneDetect
 - faster-whisper (опционально для транскрипции)
-- ffmpeg (для работы с аудио) 
+- ffmpeg (для работы с аудио)
+- Jinja2 (для шаблонизации HTML)
+
+## Лицензия
+
+MIT 

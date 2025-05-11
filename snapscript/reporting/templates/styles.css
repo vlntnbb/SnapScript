@@ -1,0 +1,189 @@
+/* Общие стили */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+    background-color: #f8f8f8;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #2c3e50;
+    border-bottom: 2px solid #e7e7e7;
+    padding-bottom: 10px;
+}
+
+/* Стили для таблицы снимков */
+table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+    vertical-align: middle;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+    color: #555;
+}
+
+img {
+    max-width: 480px;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+}
+
+/* Стили для временной шкалы */
+.timeline {
+    margin-top: 20px;
+}
+
+.event {
+    border: 1px solid #ddd;
+    margin-bottom: 15px;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.event-time {
+    font-weight: bold;
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 10px;
+}
+
+.snapshot img {
+    max-width: 480px;
+    height: auto;
+    display: block;
+    margin-top: 10px;
+    border-radius: 4px;
+}
+
+.transcript {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    border-left: 3px solid #ccc;
+}
+
+.transcript p {
+    margin: 5px 0;
+    flex-grow: 1;
+}
+
+/* Стили для аудио-плеера */
+.audio-player {
+    margin-right: 15px;
+}
+
+.play-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.play-button:hover {
+    background-color: #45a049;
+}
+
+.playing {
+    background-color: #FF5722;
+}
+
+.playing:hover {
+    background-color: #f44336;
+}
+
+/* Стили для панели скорости воспроизведения */
+.speed-controls {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: opacity 0.3s;
+}
+
+.speed-controls:hover {
+    opacity: 1;
+}
+
+.speed-button {
+    background-color: #e7e7e7;
+    border: none;
+    color: #333;
+    padding: 6px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 13px;
+    margin: 3px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.speed-button:hover {
+    background-color: #d7d7d7;
+}
+
+.speed-active {
+    background-color: #2196F3;
+    color: white;
+}
+
+.speed-active:hover {
+    background-color: #0b7dda;
+}
+
+/* Стили для опции автопрокрутки */
+.auto-scroll-option {
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.auto-scroll-option input {
+    margin-right: 8px;
+}
+
+.auto-scroll-option label {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+/* Стили для текущего воспроизведения */
+.current-playing {
+    border-left: 4px solid #FF5722;
+    background-color: #fff8f5;
+} 

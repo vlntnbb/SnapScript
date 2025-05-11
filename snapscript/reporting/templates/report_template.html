@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="styles.css">
+    {% if audio_available %}
+    <script src="audio_controls.js"></script>
+    {% endif %}
+</head>
+<body>
+    <h1>{{title}}</h1>
+    
+    {% if audio_available %}
+    <div class="speed-controls">
+        <span>Скорость: </span>
+        <button id="speed-1" class="speed-button" onclick="changeSpeed(1.0)">1x</button>
+        <button id="speed-1_25" class="speed-button" onclick="changeSpeed(1.25)">1.25x</button>
+        <button id="speed-1_5" class="speed-button" onclick="changeSpeed(1.5)">1.5x</button>
+        <button id="speed-1_75" class="speed-button" onclick="changeSpeed(1.75)">1.75x</button>
+        <button id="speed-2" class="speed-button" onclick="changeSpeed(2.0)">2x</button>
+        <button id="speed-2_5" class="speed-button" onclick="changeSpeed(2.5)">2.5x</button>
+        <div class="auto-scroll-option">
+            <input type="checkbox" id="auto-scroll" checked onchange="toggleAutoScroll()">
+            <label for="auto-scroll">Следовать за аудио</label>
+        </div>
+    </div>
+    {% endif %}
+    
+    <div class="timeline">
+        {% for event in events %}
+            {% if event.type == 'snapshot' %}
+                <div class="event snapshot">
+                    <div class="event-time">Снимок: {{event.time_str}}</div>
+                    <div class="snapshot"><img src="{{event.data}}" alt="Снимок {{event.time_str}}"></div>
+                </div>
+            {% elif event.type == 'transcript' %}
+                <div class="transcript">
+                    {% if event.audio_file %}
+                        <div class="audio-player">
+                            <audio id="audio_{{event.id}}" src="{{event.audio_file}}"></audio>
+                            <button id="btn_audio_{{event.id}}" class="play-button" onclick="playAudio('audio_{{event.id}}', this)">▶</button>
+                        </div>
+                    {% endif %}
+                    <p>{{event.data}}</p>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</body>
+</html> 

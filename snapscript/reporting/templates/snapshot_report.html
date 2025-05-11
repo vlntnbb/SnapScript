@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h1>{{title}}</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Таймкод</th>
+                <th>Снимок</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for row in rows %}
+            <tr>
+                <td>{{row.num}}</td>
+                <td>{{row.time}}</td>
+                <td><img src="{{row.filename}}" alt="Снимок {{row.num}}"></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html> 
