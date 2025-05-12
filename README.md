@@ -54,8 +54,9 @@ python snapscript_cli.py путь/к/видео.mp4 --threshold 15 --stabilizati
 Для включения транскрипции:
 
 ```bash
-python snapscript_cli.py путь/к/видео.mp4 --transcribe --whisper-model medium
+python snapscript_cli.py путь/к/видео.mp4 --transcribe --whisper-model large-v3
 ```
+размер модели Whisper (tiny, base, small, medium, large-v1, large-v2, large-v3). По умолчанию: medium.
 
 С извлечением аудио-сегментов:
 
